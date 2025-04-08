@@ -1,0 +1,67 @@
+services:
+  # MySQL数据库
+  mysql:
+    image: mysql:5.7
+    container_name: chess_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 8prvp55k
+      MYSQL_DATABASE: chinese_chess_db
+    ports:
+      - "33564:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - chess_network
+
+  # 后端服务
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    container_name: chess_server
+    restart: always
+    depends_on:
+      - mysql
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=chinese_chess_db
+      - DB_USER=root
+      - DB_PASSWORD=8prvp55k
+      - NODE_ENV=development
+      - PORT=5000
+    networks:
+      - chess_network
+
+  # 前端服务
+  client:
+    build:
+      context: ./client
+      dockerfile: src/Dockerfile.dev
+    container_name: chess_client
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://localhost:5001/api
+      - REACT_APP_SOCKET_URL=http://localhost:5001
+    depends_on:
+      - server
+    networks:
+      - chess_network
+
+networks:
+  chess_network:
+    driver: bridge
+
+volumes:
+  mysql_data: 

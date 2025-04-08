@@ -1,0 +1,75 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 棋盘样式 */
+.chessboard {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  border: 2px solid #8B4513;
+  background-color: #DEB887;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  aspect-ratio: 9/10;
+  position: relative;
+}
+
+.cell {
+  border: 1px solid #8B4513;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.cell.selected {
+  background-color: rgba(255, 255, 0, 0.3);
+}
+
+.cell.valid-move {
+  background-color: rgba(0, 255, 0, 0.2);
+}
+
+.chess-piece {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.chess-piece.red {
+  background-color: #f44336;
+  color: white;
+}
+
+.chess-piece.black {
+  background-color: #000;
+  color: white;
+}
+
+/* 对角线 - 用于"九宫"区域 */
+.palace-diagonal {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+} 

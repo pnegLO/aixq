@@ -1,0 +1,399 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.game-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.game-info h1 {
+  color: #d4380d;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.status-panel {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.status-panel p {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+.red-text {
+  color: #d4380d;
+  font-weight: bold;
+}
+
+.black-text {
+  color: #000;
+  font-weight: bold;
+}
+
+.check-warning {
+  color: #ff4d4f;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.game-result {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid #d9d9d9;
+}
+
+.game-result p {
+  margin: 0.5rem 0;
+}
+
+.control-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.difficulty-control,
+.color-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.difficulty-control select,
+.color-control select {
+  padding: 0.5rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: white;
+}
+
+.board-container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* 移动历史记录 */
+.move-history {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+.move-history h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.move-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.move-list li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.move-list li:last-child {
+  border-bottom: none;
+}
+
+/* 网络对战相关样式 */
+.player-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.player-card {
+  background-color: #f9f9f9;
+  padding: 0.8rem;
+  border-radius: 8px;
+  width: 48%;
+}
+
+.player-card.current {
+  border: 2px solid #d4380d;
+}
+
+.player-name {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.player-status {
+  color: #52c41a;
+  font-size: 0.9rem;
+}
+
+.player-status.waiting {
+  color: #faad14;
+}
+
+.game-id-section {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.game-id-label {
+  font-weight: bold;
+}
+
+.copy-button {
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.copy-button:hover {
+  background-color: #096dd9;
+}
+
+.waiting-message {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 1.2rem;
+  color: #faad14;
+}
+
+.chat-section {
+  margin-top: 1rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.chat-messages {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: white;
+}
+
+.chat-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
+
+.chat-send {
+  background-color: #1890ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+/* 响应式调整 */
+@media (min-width: 768px) {
+  .game-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .game-info {
+    width: 30%;
+    position: sticky;
+    top: 1rem;
+  }
+  
+  .board-container {
+    width: 70%;
+  }
+}
+
+@media (max-width: 767px) {
+  .control-panel {
+    flex-direction: column;
+  }
+  
+  .control-panel button {
+    width: 100%;
+  }
+}
+
+/* 游戏历史页面样式 */
+.game-history-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.game-history-page h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #8b4513;
+}
+
+.game-info {
+  background-color: #f5f5dc;
+  border: 1px solid #d2b48c;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-info div {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.history-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.history-controls button {
+  background-color: #8b4513;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.history-controls button:hover {
+  background-color: #a0522d;
+}
+
+.history-controls button:disabled {
+  background-color: #d2b48c;
+  cursor: not-allowed;
+}
+
+.move-history {
+  background-color: #f5f5dc;
+  border: 1px solid #d2b48c;
+  border-radius: 8px;
+  padding: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.move-history h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #8b4513;
+}
+
+.moves-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.move-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 1px solid #d2b48c;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.move-item:hover {
+  background-color: #f0e6d2;
+}
+
+.move-item.current-move {
+  background-color: #e6d8b9;
+  font-weight: bold;
+}
+
+.move-item.red {
+  border-left: 3px solid #c53030;
+}
+
+.move-item.black {
+  border-left: 3px solid #2d3748;
+}
+
+.move-text {
+  font-size: 15px;
+}
+
+.move-time {
+  color: #777;
+  font-size: 13px;
+}
+
+.no-moves {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.navigation-buttons button {
+  background-color: #8b4513;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.navigation-buttons button:hover {
+  background-color: #a0522d;
+} 
